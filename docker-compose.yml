@@ -24,6 +24,9 @@ services:
     container_name: mqtt-exporter
     build: ./exporter
     restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     ports:
       - "8000:8000"
     depends_on:
@@ -31,6 +34,9 @@ services:
 
   publisher:
     build: ./publisher
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     container_name: mqtt-publisher
 
 volumes:

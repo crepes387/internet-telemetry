@@ -2,6 +2,7 @@ from paho.mqtt import client as mqtt
 from paho.mqtt.client import CallbackAPIVersion
 from prometheus_client import Gauge, start_http_server
 import time
+
 data_memory = Gauge("virtual memory", "virtual memory di laptop")
 data_cpu = Gauge("cpu percent", "berapa persen cpu yang dipakai")
 battery = Gauge("battery random", "turun 3 setiap 3 detik")
@@ -43,10 +44,10 @@ def on_subscribe(client, userdata, mid, rc, properties):
         print("subscribe berhasil")
  
 connected = False
-broker_address = "fuji.lmq.cloudamqp.com"
+broker_address = "ef6ff411.ala.asia-southeast1.emqxsl.com"
 port = 8883
-username = "taqfkmpa:taqfkmpa"
-password = "gUhaWkG-m3qA7pmRUSnl3ARqEIY0TPMS"
+username = "user1"
+password = "public1"
 topic = "drive/topic/#"
 
 client = mqtt.Client(callback_api_version=CallbackAPIVersion.VERSION2)
@@ -62,4 +63,3 @@ client.loop_start()
 start_http_server(8000)
 while True:
     time.sleep(0.2)
-
